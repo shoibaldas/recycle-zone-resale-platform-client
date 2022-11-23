@@ -13,7 +13,7 @@ const Navbar = () => {
     const navLinkStyles = ({ isActive }) => {
         return {
             fontWeight: isActive ? '600' : '600',
-            color: isActive ? '#0D50B1' : '#FFFFFF',
+            color: isActive ? '#1DDABA' : '#FFFFFF',
         }
     }
 
@@ -33,7 +33,7 @@ const Navbar = () => {
                 </>
                 :
                 <li className='my-6 md:my-0'>
-                    <NavLink to='/login' className='hover:bg-sky-700 rounded-md font-semibold outline outline-1 hover:outline-none transition ease-in duration-500 text-white px-4 py-2'>Login</NavLink>
+                    <NavLink to='/login' className='hover:bg-teal-600 rounded-md font-semibold outline outline-1 hover:outline-none transition ease-in duration-500 text-white px-4 py-2'>Login</NavLink>
                 </li>
         }
 
@@ -42,11 +42,11 @@ const Navbar = () => {
     return (
         <nav className='bg-black p-2 md:flex md:justify-between md:items-center'>
             <div className='flex items-center justify-between'>
-                <Link className='font-bold text-2xl cursor-pointer flex items-center only:text-gray-50'>
+                <Link className='font-bold text-2xl cursor-pointer flex items-center text-gray-50'>
                     <span className='text-4xl font-semibold text-indigo-600 mr-1 pt-2'>
                         <ion-icon name="logo-electron"></ion-icon>
                     </span>
-                    Recycle <span className='text-lg font-semibold text-sky-700'>Zone</span>
+                    Recycle <span className='text-lg font-semibold text-teal-600'>Zone</span>
                 </Link>
                 <span onClick={() => setOpen(!open)} className='md:hidden cursor-pointer'>
                     {
