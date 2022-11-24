@@ -20,7 +20,7 @@ const HomeCarousel = ({ slide }) => {
                 <p className='text-sm text-gray-200 w-full md:w-3/5'>{info}</p>
             </div>
             <div className="absolute flex justify-start transform -translate-y-1/2 left-5 mt-2 md:mt-0 md:left-10 top-3/4 md:top-2/3">
-                <Link to='services' spy={true} smooth={true} offset={50} duration={1000} className="rounded cursor-pointer px-2 py-1 md:px-4 md:py-2  text-gray-100 font-semibold bg-teal-600 hover:bg-teal-700 ease-in duration-200 mr-5">Discover More</Link>
+                <Link to='/' className="rounded cursor-pointer px-2 py-1 md:px-4 md:py-2  text-gray-100 font-semibold bg-teal-600 hover:bg-teal-700 ease-in duration-200 mr-5">Discover More</Link>
             </div>
         </div >
     );

@@ -7,8 +7,13 @@ import { BiMenu } from "react-icons/bi";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
 
     const navLinkStyles = ({ isActive }) => {
         return {
@@ -28,7 +33,7 @@ const Navbar = () => {
             user?.uid ?
                 <>
                     <li className='my-6 md:my-0'>
-                        <NavLink style={navLinkStyles}>Signout</NavLink>
+                        <NavLink onClick={handleLogOut} style={navLinkStyles}>Signout</NavLink>
                     </li>
                 </>
                 :
