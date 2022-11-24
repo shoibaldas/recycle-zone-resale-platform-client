@@ -57,15 +57,15 @@ const Login = () => {
                 <h2 className='text-center text-2xl font-semibold'>Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className='form-control w-full max-w-xs'>
-                        <label className='label'><span className='label-text font-semibold'>Username <span className='text-red-500'>*</span></span></label>
-                        <input type="email" {...register("email", { required: "Email is required" })} className='rounded-md py-1 px-2 border border-gray-500' />
+                        <label className='label'><span className='label-text font-semibold'>Email <span className='text-red-500'>*</span></span></label>
+                        <input type="email" {...register("email", { required: "Email is required" })} placeholder='Your email' className='rounded-md py-1 px-2 border border-gray-500' />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
                     <div className='relative form-control w-full max-w-xs'>
                         <label className='label'><span className='label-text font-semibold'>Password <span className='text-red-500'>*</span></span></label>
-                        <input type={showPassword ? "text" : "password"} {...register("password", { required: "Password is required", minLength: { value: 6, message: 'Password must be minimum 6 characters' } })} className='rounded-md py-1 px-2 border border-gray-500' />
+                        <input type={showPassword ? "text" : "password"} {...register("password", { required: "Password is required", minLength: { value: 6, message: 'Password must be minimum 6 characters' } })} placeholder='Password' className='rounded-md py-1 px-2 border border-gray-500' />
 
-                        <button className='absolute bottom-1 right-1 text-sm font-semibold bg-gray-200 px-2 rounded-md border-2 border-teal-600' type="button" onClick={handleToggleShowPassword}>
+                        <button className='absolute bottom-[6.5px] right-1 text-[11px] font-semibold bg-gray-200 px-2 rounded-md border-2 border-teal-600' type="button" onClick={handleToggleShowPassword}>
                             {showPassword ? "Hide" : "Show"}
                         </button>
 
