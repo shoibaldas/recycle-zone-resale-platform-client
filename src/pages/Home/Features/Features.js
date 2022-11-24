@@ -2,10 +2,10 @@ import React from 'react';
 
 const Features = () => {
     return (
-        <section className="m-4 md:m-8  dark:text-gray-800">
+        <section className="p-4 bg-black dark:text-gray-200">
             <div className="container mx-auto p-2 my-4 space-y-2 text-center">
                 <h2 className="text-4xl md:text-5xl font-bold">Our business is based on three rules</h2>
-                <p className="dark:text-gray-500">"Log your happiness with us"</p>
+                <p className="dark:text-gray-300">"Log your happiness with us"</p>
             </div>
             <div className="max-w-4xl mx-auto grid justify-center gap-4 md:grid-cols-3">
                 <div className="flex flex-col items-center">

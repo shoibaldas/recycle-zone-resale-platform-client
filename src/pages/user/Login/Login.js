@@ -11,7 +11,7 @@ const Login = () => {
     const handleToggleShowPassword = () => setShowPassword(!showPassword)
     const [loginUserEmail, setLoginUserEmail] = useState('')
     const [loginError, setLoginError] = useState('')
-    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const { signInUser, signInWithGoogle, setSignIn } = useContext(AuthContext);
 
     const [token] = useToken(loginUserEmail);
     const location = useLocation();
@@ -35,6 +35,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setSignIn(user);
                 setLoginUserEmail(data.email);
             })
             .catch(error => {

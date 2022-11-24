@@ -1,0 +1,17 @@
+[
+    {
+        "categoryName": "Moutain Bike",
+        "categoryImg": "https://i.ibb.co/80p7Pd0/color-ocean-cube.jpg",
+        "info": "Mountain bikes are designed to go on mountains or on off-road trails, which means they’re chunkier, have knobbly tyres on them."
+    },
+    {
+        "categoryName": "Road Bike",
+        "categoryImg": "https://i.ibb.co/SxPN9C9/giant-colorbconcrete.jpg",
+        "info": "As the name suggests, road bikes are designed to ride on the road. Can’t all bikes ride on the road, you wonder? They absolutely can."
+    },
+    {
+        "categoryName": "Woman's Bike",
+        "categoryImg": "https://i.ibb.co/4J8WN2H/mountain-bike.jpg",
+        "info": "Women’s bikes are designed for women, insofar as they come in smaller frame sizes and a different frame geometry to that of a ‘men’s’ bike."
+    }
+]
