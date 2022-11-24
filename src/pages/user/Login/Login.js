@@ -27,7 +27,7 @@ const Login = () => {
             navigate(from, { replace: true })
         })
     }
-    
+
     const handleLogin = async (data) => {
         console.log(data);
         setLoginError('');
@@ -65,7 +65,7 @@ const Login = () => {
                     </div>
                     <label className='label-text cursor-pointer underline underline-offset-1'>Forget Password?</label>
                     {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
-                    <input loading={loading} type="submit" value='Login' className='mt-6 cursor-pointer font-semibold text-white w-full max-w-xs bg-teal-600 hover:bg-teal-700 p-2 rounded-md' />
+                    <input type="submit" value='Login' className='mt-6 cursor-pointer font-semibold text-white w-full max-w-xs bg-teal-600 hover:bg-teal-700 p-2 rounded-md' />
                     {loginError && <p className='text-red-600'>{loginError}</p>}
                     <div className='text-center'>
                         <label className='label-text'>Don't have an account? <Link to='/signup' className='cursor-pointer font-semibold text-teal-900'>Create Account</Link></label>

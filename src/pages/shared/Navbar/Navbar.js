@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import { MdClose } from "react-icons/md";
 import { BiMenu } from "react-icons/bi";
-
+import { FaUserAlt } from "react-icons/fa";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -32,16 +32,29 @@ const Navbar = () => {
         {
             user?.uid ?
                 <>
-                    <li className='my-6 md:my-0'>
-                        <NavLink onClick={handleLogOut} style={navLinkStyles}>Signout</NavLink>
-                    </li>
+                    <div className="dropdown dropdown-end mr-6">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <img className='w-10 rounded-full' src={user?.photoURL} alt='' />
+                                        <i className="fa-solid w-8 h-4 text-white font-bold fa-angle-down"></i>
+                                    </>
+                                    :
+                                    <FaUserAlt className='bg-gray-500'></FaUserAlt>
+                            }
+                        </label>
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+                            <li><Link to='/myreviews'>My orders</Link></li>
+                            <li><Link onClick={handleLogOut}>Logout</Link></li>
+                        </ul>
+                    </div>
                 </>
                 :
                 <li className='my-6 md:my-0'>
                     <NavLink to='/login' className='hover:bg-teal-600 rounded-md font-semibold outline outline-1 hover:outline-none transition ease-in duration-500 text-white px-4 py-2'>Login</NavLink>
                 </li>
         }
-
     </>
 
     return (

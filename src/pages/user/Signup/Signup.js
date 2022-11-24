@@ -7,21 +7,21 @@ import { AuthContext } from '../../../context/AuthProvider';
 import useToken from '../../../hook/useToken';
 
 const Signup = () => {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const [createdUserEmail, setCreatedUserEmail] = useState('')
-    const [signupError, setSignupError] = useState('')
-    const { createUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext)
+    const [signupError, setSignupError] = useState('');
+    const { createUser, updateUser, signInWithGoogle, setSignIn } = useContext(AuthContext);
+
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    const imageHostKey = process.env.REACT_APP_imgbb_key;
 
-    // const [token] = useToken(createdUserEmail);
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
-    // if (token) {
-    //     toast.success('User Created Successfully.')
-    //     navigate('/');
-    // }
+    if (token) {
+        toast.success('User Created Successfully.')
+        navigate('/');
+    }
 
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
@@ -30,6 +30,8 @@ const Signup = () => {
         })
     }
 
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+
     const handleSignup = (data) => {
         setSignupError('');
 
@@ -37,32 +39,36 @@ const Signup = () => {
         const formData = new FormData();
         formData.append('image', image);
         const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
-
         fetch(url, {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(imageData => {
-                createUser(data.email, data.password)
-                    .then(result => {
-                        const user = result.user;
-                        console.log(user);
+                if (imageData.success) {
+                    console.log(imageData.data.url)
+                    createUser(data.email, data.password)
+                        .then(result => {
+                            const user = result.user;
+                            console.log(user);
 
-                        const userInfo = {
-                            displayName: data.name,
-                            photoURL: imageData.data.url,
-                        }
-                        updateUserProfile(userInfo)
-                            .then(() => {
-                                saveUser(user?.displayName, user?.email, data.role);
-                            })
-                            .catch(err => console.log(err));
-                    })
-                    .catch(error => {
-                        console.log(error)
-                        setSignupError(error.message)
-                    });
+                            const userInfo = {
+                                displayName: data.name,
+                                photoURL: imageData.data.url,
+                            }
+                            console.log(userInfo)
+                            updateUser(userInfo)
+                                .then(() => {
+                                    setSignIn(userInfo)
+                                    saveUser(user?.displayName, user?.email, data.role);
+                                })
+                                .catch(error => console.log(error));
+                        })
+                        .catch(error => {
+                            console.log(error)
+                            setSignupError(error.message)
+                        });
+                }
             })
     };
 
@@ -78,11 +84,13 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                // setCreatedUserEmail(email);
+                setCreatedUserEmail(email);
             })
     }
 
     const handleToggleShowPassword = () => setShowPassword(!showPassword);
+
+
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
