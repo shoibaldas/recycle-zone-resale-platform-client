@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import AllBuyer from '../../DashboardContent/AdminContent/AllBuyer/AllBuyer';
-import Allseller from '../../DashboardContent/AdminContent/AllSeller/Allseller';
 import DashBoardLayout from '../../layout/DashBoardLayout';
 import Main from '../../layout/Main';
-import AddProduct from '../../pages/AddProduct/AddProduct';
 import Blog from '../../pages/Blog/Blog';
+import AllBuyer from '../../pages/DashboardContent/AdminContent/AllBuyer/AllBuyer';
+import Allseller from '../../pages/DashboardContent/AdminContent/AllSeller/Allseller';
+import AddProduct from '../../pages/DashboardContent/SellerContent/AddProduct/AddProduct';
+import MyProducts from '../../pages/DashboardContent/SellerContent/MyProducts/MyProducts';
 import Home from '../../pages/Home/Home/Home';
 import MyOrders from '../../pages/MyOrders/MyOrders';
 import Login from '../../pages/user/Login/Login';
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addproduct',
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
+            },
+            {
+                path: '/dashboard/myproducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/myorders',

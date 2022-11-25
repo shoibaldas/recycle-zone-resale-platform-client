@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Loading from '../../../Loading/Loading';
-import AllBuyerData from './AllBuyerData';
+import Loading from '../../../../Loading/Loading';
+import AllSellerData from './AllSellerData';
 
-const AllBuyer = () => {
-    const { data: allbuyers = [], isLoading } = useQuery({
-        queryKey: ['allbuyer'],
+const Allseller = () => {
+    const { data: allsellers = [], isLoading } = useQuery({
+        queryKey: ['allseller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/allbuyer');
+            const res = await fetch('http://localhost:5000/users/allseller');
             const data = await res.json();
             return data;
         }
@@ -36,10 +36,10 @@ const AllBuyer = () => {
                 </thead>
                 <tbody>
                     {
-                        allbuyers?.map(buyer => <AllBuyerData
-                            key={buyer._id}
-                            buyer={buyer}
-                        ></AllBuyerData>)
+                        allsellers?.map(seller => <AllSellerData
+                            key={seller._id}
+                            seller={seller}
+                        ></AllSellerData>)
                     }
                 </tbody>
             </table>
@@ -48,4 +48,4 @@ const AllBuyer = () => {
     );
 };
 
-export default AllBuyer;
+export default Allseller;

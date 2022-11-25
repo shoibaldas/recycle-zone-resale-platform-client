@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthProvider';
-import Loading from '../../Loading/Loading';
+import { AuthContext } from '../../../../context/AuthProvider';
+import Loading from '../../../../Loading/Loading';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -46,6 +46,7 @@ const AddProduct = () => {
                         image: imageData.data.url,
                         description: data.description,
                         sellerName: sellerName,
+                        sellerMail: user?.email,
                         phone: data.phone,
                         address: data.address,
                         oldPrice: data.oldPrice,

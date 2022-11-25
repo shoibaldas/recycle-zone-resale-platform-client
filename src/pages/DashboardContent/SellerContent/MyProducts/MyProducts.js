@@ -1,13 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import Loading from '../../../Loading/Loading';
-import AllSellerData from './AllSellerData';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../context/AuthProvider';
+import Loading from '../../../../Loading/Loading';
+import MyProductsData from './MyProductsData';
 
-const Allseller = () => {
-    const { data: allsellers = [], isLoading } = useQuery({
-        queryKey: ['allseller'],
+const MyProducts = () => {
+    const { user } = useContext(AuthContext);
+
+    const { data: myproducts = [], isLoading } = useQuery({
+        queryKey: ['myproduct'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/allseller');
+            const res = await fetch(`http://localhost:5000/products/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -26,20 +29,19 @@ const Allseller = () => {
                         <th scope="col" className="py-3 px-6">
                             Name
                         </th>
-                        <th scope="col" className="py-3 px-8">
-                            Status
+                        <th scope="col" className="py-3 px-24">
+                            Added
                         </th>
-                        <th scope="col" className="py-3 px-7">
+                        <th scope="col" className="py-3 px-6">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        allsellers?.map(seller => <AllSellerData
-                            key={seller._id}
-                            seller={seller}
-                        ></AllSellerData>)
+                        myproducts?.map(product => <MyProductsData key={product._id}
+                            product={product}></MyProductsData>
+                        )
                     }
                 </tbody>
             </table>
@@ -48,4 +50,4 @@ const Allseller = () => {
     );
 };
 
-export default Allseller;
+export default MyProducts;
