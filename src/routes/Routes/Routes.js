@@ -5,10 +5,11 @@ import Main from '../../layout/Main';
 import Blog from '../../pages/Blog/Blog';
 import AllBuyer from '../../pages/DashboardContent/AdminContent/AllBuyer/AllBuyer';
 import Allseller from '../../pages/DashboardContent/AdminContent/AllSeller/Allseller';
+import MyOrders from '../../pages/DashboardContent/BuyerContent/MyOrders/MyOrders';
 import AddProduct from '../../pages/DashboardContent/SellerContent/AddProduct/AddProduct';
 import MyProducts from '../../pages/DashboardContent/SellerContent/MyProducts/MyProducts';
 import Home from '../../pages/Home/Home/Home';
-import MyOrders from '../../pages/MyOrders/MyOrders';
+import Products from '../../pages/Products/Products';
 import Login from '../../pages/user/Login/Login';
 import Signup from '../../pages/user/Signup/Signup';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
                 path: '/signup',
                 element: <Signup />
             },
+            {
+                path: '/category/:categoryName',
+                element: <PrivateRoutes><Products></Products></PrivateRoutes>
+            }
         ]
     },
     {

@@ -4,7 +4,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 
 const ProductItems = ({ category }) => {
-    const { _id, categoryImg, categoryName, info } = category;
+    const { categoryImg, categoryName, info } = category;
     return (
         <div className="max-w-sm rounded-md shadow-md dark:bg-teal-700 dark:text-gray-100">
             <PhotoProvider>
@@ -18,10 +18,9 @@ const ProductItems = ({ category }) => {
                     <p className="text-sm text-gray-100">{info}</p>
                 </div>
                 <div className=''>
-                    <Link to={`/services/${_id}/details`} className="flex items-center justify-center w-full p-3 font-semibold rounded-md outline outline-1 hover:bg-teal-900 transition ease-in duration-200 text-gray-100">View</Link>
+                    <Link to={`/category/${categoryName}`} className="flex items-center justify-center w-full p-3 font-semibold rounded-md outline outline-1 hover:bg-teal-900 transition ease-in duration-200 text-gray-100">View</Link>
                 </div>
             </div>
-
         </div>
     );
 };

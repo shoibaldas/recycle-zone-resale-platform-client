@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from '../../../Loading/Loading';
-import ProductItems from '../../ProductItems/ProductItems';
+import ProductItems from '../ProductItems/ProductItems';
 
 const ProductCategory = () => {
 
