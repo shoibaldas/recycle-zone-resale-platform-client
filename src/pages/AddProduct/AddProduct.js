@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import Loading from '../../Loading/Loading';
 
 const AddProduct = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,7 +13,7 @@ const AddProduct = () => {
 
     const navigate = useNavigate();
 
-    const { data: categories } = useQuery({
+    const { data: categories, isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/categories');
@@ -68,10 +69,13 @@ const AddProduct = () => {
                             toast.success(`${data.productName} is added successfully`);
                             navigate('/')
                         })
-
                 }
             })
     };
+
+    if (isLoading) {
+        <Loading></Loading>
+    }
 
     return (
         <div className='h-[600px] my-40 md:my-0 flex justify-center items-center'>
