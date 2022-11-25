@@ -81,8 +81,7 @@ const Signup = () => {
             body: JSON.stringify(user)
         })
             .then(res => res.json())
-            .then(data => {
-                console.log(data)
+            .then(() => {
                 setCreatedUserEmail(email);
             })
     }

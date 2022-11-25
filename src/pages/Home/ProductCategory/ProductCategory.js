@@ -5,10 +5,14 @@ import ProductItems from '../../ProductItems/ProductItems';
 const ProductCategory = () => {
 
     const { data: categories = [] } = useQuery({
-        queryKey: ['categories'],
-        queryFn: () => fetch(`http://localhost:5000/categories`)
-            .then(res => res.json())
-    })
+        queryKey: ['category'],
+        queryFn: async () => {
+            const res = await fetch('http://localhost:5000/categories');
+            const data = await res.json();
+            return data;
+        }
+    });
+
     return (
         <div>
             <div className='mt-16 flex flex-col items-center'>
@@ -18,7 +22,7 @@ const ProductCategory = () => {
             <div className='grid place-items-center md:max-w-screen-lg md:mx-auto py-6'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-6 gap-6'>
                     {
-                        categories.map(category => <ProductItems key={category._id}
+                        categories?.map(category => <ProductItems key={category._id}
                             category={category}
                         ></ProductItems>)
                     }
