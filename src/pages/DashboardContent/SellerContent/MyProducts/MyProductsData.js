@@ -6,7 +6,7 @@ const MyProductsData = ({ product }) => {
     return (
         <tr className=" border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" className="flex items-center py-4 px-4 text-gray-900 whitespace-nowrap dark:text-white">
-                <img class="w-10 h-10 rounded-full" src={image} alt="" />
+                <img className="w-10 h-10 rounded-full" src={image} alt="" />
                 <div className="pl-3">
                     <div className="text-base font-semibold">{productName}</div>
                     <div className="font-normal text-gray-200">{category}</div>

@@ -18,7 +18,7 @@ const ProductItems = ({ category }) => {
                     <p className="text-sm text-gray-100">{info}</p>
                 </div>
                 <div className=''>
-                    <Link to={`/category/${categoryName}`} className="flex items-center justify-center w-full p-3 font-semibold rounded-md outline outline-1 hover:bg-teal-900 transition ease-in duration-200 text-gray-100">View</Link>
+                    <Link to={`/category/${categoryName}`} className="flex items-center justify-center w-full p-3 font-semibold rounded-md outline outline-1 hover:bg-amber-600 transition ease-in duration-200 hover:text-gray-800 text-gray-100">View</Link>
                 </div>
             </div>
         </div>

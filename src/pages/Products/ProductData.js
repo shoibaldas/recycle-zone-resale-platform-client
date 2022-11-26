@@ -3,7 +3,7 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import { TbCurrencyTaka } from "react-icons/tb";
 
-const ProductData = ({ product }) => {
+const ProductData = ({ product, setBooking }) => {
     const { image, productName, description, category, sellerName, oldPrice, newPrice, condition, phone, address, time } = product;
     return (
         <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
@@ -23,14 +23,16 @@ const ProductData = ({ product }) => {
                 <p className='text-md font-semibold'>Category: <span className='font-normal'>{category}</span></p>
                 <p className='font-semibold'>Seller Name: <span className='font-normal'>{sellerName}</span></p>
                 <p className='text-md font-semibold'>Location: <span className='font-normal'>{address}</span></p>
-                <p className='text-md font-semibold'>Condition: <span className='font-normal'>{condition}</span></p>
+                <div className='bg-black px-2 my-2 rounded-md w-44'>
+                    <p className=' text-md font-semibold'>Condition: <span className='font-normal'>{condition}</span></p>
+                </div>
                 <div className='flex justify-between mr-2 md:mr-28'>
-                    <div className='flex items-center'>
-                        <p className='font-semibold'>Price: <span className='font-normal'>{newPrice}</span> </p>
+                    <div className='bg-black px-2 rounded-md flex items-center'>
+                        <p className='font-semibold'>Price: <span className='font-normal'>{newPrice}</span></p>
                         <TbCurrencyTaka className='text-xl' />
                     </div>
-                    <div className='flex items-center'>
-                        <p className='font-semibold'>Old Price: <span className='font-normal'>{oldPrice}</span> </p>
+                    <div className='bg-black px-2 rounded-md flex items-center'>
+                        <p className='font-semibold'>Old Price: <span className='font-normal'>{oldPrice}</span></p>
                         <TbCurrencyTaka className='text-xl' />
                     </div>
                 </div>
@@ -39,7 +41,9 @@ const ProductData = ({ product }) => {
                 <div className='my-6'>
                     <p className='font-semibold text-lg'>Comment: <span className='text-base font-normal'>{description}</span></p>
                 </div>
-                <button className='text-gray-800 font-semibold bg-amber-600 px-4 py-2 rounded-md'>Buy Now</button>
+                <label htmlFor="my-modal-3"
+                    onClick={() => setBooking(product)}
+                    className="text-gray-800 font-semibold bg-amber-500 px-4 py-2 rounded-md">Book Now</label>
             </div>
         </div>
     );
