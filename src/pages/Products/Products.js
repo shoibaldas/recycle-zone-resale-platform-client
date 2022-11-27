@@ -1,27 +1,66 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import Loading from '../../Loading/Loading';
 import BookingModal from '../DashboardContent/BuyerContent/BookingModal/BookingModal';
+import ReportConfirmationModal from '../ReportProducts/ReportConfirmationModal/ReportConfirmationModal';
 
 import ProductData from './ProductData';
 
 const Products = () => {
-    const { loading } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [booking, setBooking] = useState(null);
     const { categoryName } = useParams();
     const [products, setProducts] = useState([]);
+    const [productEmail, setProductEmail] = useState('');
+    const [veryfied, setVeryfied] = useState({});
+    const [reportProduct, setReportProduct] = useState(null);
+
+    const closeModal = () => {
+        setReportProduct(null);
+    }
 
     useEffect(() => {
         fetch(`http://localhost:5000/category/${categoryName}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setProducts(data)
+                if (data) {
+                    fetch(`http://localhost:5000/veryfied/seller/${productEmail}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            setVeryfied(data)
+                        })
+                }
             })
-    }, [categoryName])
+    }, [categoryName, productEmail])
 
-    console.log(products)
+    const handleReport = product => {
+        const order = {
+            user: user?.displayName,
+            email: user?.email,
+            productId: product._id,
+            productName: product.productName,
+            productSellerMail: product.sellerMail
+        }
+
+        fetch(`http://localhost:5000/report-items`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(order)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast.success('You  successfully.')
+                console.log(data);
+                setBooking(null);
+            })
+    }
 
     if (loading) {
         return <Loading></Loading>
@@ -35,6 +74,9 @@ const Products = () => {
                         key={product._id}
                         product={product}
                         setBooking={setBooking}
+                        veryfied={veryfied}
+                        setReportProduct={setReportProduct}
+                        setProductEmail={setProductEmail}
                     ></ProductData>)
                 }
                 {
@@ -43,6 +85,17 @@ const Products = () => {
                         booking={booking}
                         setBooking={setBooking}
                     ></BookingModal>
+                }
+                {
+                    reportProduct && <ReportConfirmationModal
+                        title={`Are you sure you want to procced?`}
+                        message={`Do want to report ${reportProduct.productName}?`}
+                        successAction={handleReport}
+                        successButtonName="Confirm"
+                        modalData={reportProduct}
+                        closeModal={closeModal}
+                    >
+                    </ReportConfirmationModal>
                 }
             </div>
 
