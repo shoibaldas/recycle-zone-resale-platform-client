@@ -11,6 +11,7 @@ import AddProduct from '../../pages/DashboardContent/SellerContent/AddProduct/Ad
 import MyProducts from '../../pages/DashboardContent/SellerContent/MyProducts/MyProducts';
 import Home from '../../pages/Home/Home/Home';
 import Products from '../../pages/Products/Products';
+import ErrorPage from '../../pages/shared/ErrorPage/ErrorPage';
 import Login from '../../pages/user/Login/Login';
 import Signup from '../../pages/user/Signup/Signup';
 import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoutes><DashBoardLayout></DashBoardLayout></PrivateRoutes>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/dashboard/myorders',

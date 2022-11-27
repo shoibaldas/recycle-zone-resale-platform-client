@@ -56,8 +56,6 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
                             </td> */}
             <td className="py-4 px-6">
                 <div className='flex'>
-                    {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
-                    {/* <label htmlFor="confirmation-modal" title='Make Advertisement' className="text-gray-800 text-sm font-medium bg-amber-600 px-2 py-1 rounded-lg hover:text-gray-400 hover:bg-amber-800">Unpaid</label> */}
                     {
                         order.price && !order.paid && <Link to={`/dashboard/myorders/payment/${order._id}`}>
                             <button
@@ -72,7 +70,6 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
             </td>
             <td className="py-4 px-6">
                 <div className='flex'>
-                    {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
                     <label onClick={() => setDeletingOrder(order)} htmlFor="confirmation-modal" title='Delete Order' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
