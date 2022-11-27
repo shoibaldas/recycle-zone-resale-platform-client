@@ -1,8 +1,9 @@
 import React from 'react';
 import { AiFillDelete } from "react-icons/ai";
 
-const MyProductsData = ({ product }) => {
+const MyProductsData = ({ product, setDeletingProduct }) => {
     const { image, productName, category, time } = product;
+
     return (
         <tr className=" border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" className="flex items-center py-4 px-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -18,9 +19,7 @@ const MyProductsData = ({ product }) => {
                 </div>
             </td>
             <td className="py-4 px-6">
-                <div className='flex'>
-                    <div title='delete' className='ml-4 cursor-pointer text-xl text-red-600'><AiFillDelete /></div>
-                </div>
+                <label onClick={() => setDeletingProduct(product)} htmlFor="confirmation-modal" title='Delete Product' className="text-2xl text-red-500"><AiFillDelete className='mx-4'/></label>
             </td>
         </tr>
     );
