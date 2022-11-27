@@ -20,7 +20,7 @@ const AllSellerData = ({ seller, setDeletingSeller }) => {
             <td className="py-4 px-6">
                 <div className='flex'>
                     {/* <div title='verify' className=' cursor-pointer text-xl mr-4 text-blue-600'><BsFillCheckCircleFill /></div> */}
-                    <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" title='Delete Buyer' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
+                    <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" title='Delete Seller' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
         </tr>

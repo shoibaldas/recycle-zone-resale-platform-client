@@ -68,7 +68,6 @@ const AddProduct = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`${data.productName} is added successfully`);
-                            navigate('/')
                         })
                 }
             })
@@ -121,10 +120,10 @@ const AddProduct = () => {
                         <div className='form-control w-full max-w-xs'>
                             <label className='label'><span className='label-text font-semibold'>Condition <span className='text-red-500'>*</span></span></label>
                             <select className='py-1 px-2 rounded-md border border-gray-500' {...register("condition", { required: "Role is required" })}>
-                                <option value="old">Old</option>
-                                <option value="allmostOld">Allmost Old</option>
-                                <option value="allmostNew">Allmost New</option>
-                                <option value="new">New</option>
+                                <option value="Old">Old</option>
+                                <option value="Allmost Old">Allmost Old</option>
+                                <option value="AllMost New">Allmost New</option>
+                                <option value="New">New</option>
                             </select>
                         </div>
                         <div className='form-control w-full max-w-xs'>

@@ -9,11 +9,14 @@ import MyProductsData from './MyProductsData';
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
     const [deletingProduct, setDeletingProduct] = useState(null);
+    const [makeAdvertisement, setAdvertisement] = useState(null);
 
     const closeModal = () => {
         setDeletingProduct(null);
     }
-
+    const closeAdModal = () => {
+        setAdvertisement(null);
+    }
 
     const { data: myproducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myproduct'],
@@ -32,6 +35,33 @@ const MyProducts = () => {
             }
         }
     });
+
+    const handleAdvertisement = product => {
+        const adInfo = {
+            productId: product._id,
+            productName: product.productName,
+            image: product.image,
+            newPrice: product.newPrice,
+            condition: product.condition,
+            category: product.category
+        }
+
+        fetch(`http://localhost:5000/advertisements`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(adInfo)
+        })
+            .then(res => res.json())
+            .then(res => {
+                if (res.success) {
+                    toast.success(`${product.productName} published successfully`);
+                }
+            })
+    }
+
     const handleDeleteProduct = product => {
         fetch(`http://localhost:5000/products/${product._id}`, {
             method: 'DELETE',
@@ -61,8 +91,11 @@ const MyProducts = () => {
                         <th scope="col" className="py-3 px-6">
                             Name
                         </th>
-                        <th scope="col" className="py-3 px-24">
+                        <th scope="col" className="py-3 px-20">
                             Added
+                        </th>
+                        <th scope="col" className="py-3 px-8">
+                            Advirtisement
                         </th>
                         <th scope="col" className="py-3 px-6">
                             Action
@@ -72,7 +105,10 @@ const MyProducts = () => {
                 <tbody>
                     {
                         myproducts?.map(product => <MyProductsData key={product._id}
-                            product={product} setDeletingProduct={setDeletingProduct}></MyProductsData>
+                            product={product}
+                            setDeletingProduct={setDeletingProduct}
+                            setAdvertisement={setAdvertisement}
+                        ></MyProductsData>
                         )
                     }
                 </tbody>
@@ -85,6 +121,17 @@ const MyProducts = () => {
                     successButtonName="Delete"
                     modalData={deletingProduct}
                     closeModal={closeModal}
+                >
+                </DeleteConfirmationModal>
+            }
+            {
+                makeAdvertisement && <DeleteConfirmationModal
+                    title={`Are you sure you want to procced?`}
+                    message={`Do want to add ${makeAdvertisement.productName} as ad?`}
+                    successAction={handleAdvertisement}
+                    successButtonName="Confirm"
+                    modalData={makeAdvertisement}
+                    closeModal={closeAdModal}
                 >
                 </DeleteConfirmationModal>
             }

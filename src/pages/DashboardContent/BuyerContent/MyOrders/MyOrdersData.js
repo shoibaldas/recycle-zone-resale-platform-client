@@ -42,7 +42,7 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
             <td className="py-4 px-6">
                 <div className='flex'>
                     {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
-                    <label onClick={() => setDeletingOrder(order)} htmlFor="confirmation-modal" title='Delete Product' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
+                    <label onClick={() => setDeletingOrder(order)} htmlFor="confirmation-modal" title='Delete Order' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
         </tr>

@@ -20,7 +20,7 @@ const ProductCategory = () => {
 
     return (
         <div>
-            <div className='mt-16 flex flex-col items-center'>
+            <div className='flex flex-col items-center'>
                 <h2 className='text-3xl text-teal-600 font-bold'>Our Product Categories</h2>
                 <p className='w-3/5 text-center text-gray-600'>Choose your budget product from these category and ride your bike like you've never before.</p>
             </div>
