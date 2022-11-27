@@ -19,13 +19,13 @@ const Signup = () => {
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
     if (token) {
-        toast.success('User Created Successfully.')
         navigate('/');
     }
 
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
             console.log(result.user)
+            toast.success('Logged in Successfully.')
             navigate(from, { replace: true })
         })
     }
@@ -59,6 +59,7 @@ const Signup = () => {
                             updateUser(userInfo)
                                 .then(() => {
                                     setSignIn(userInfo)
+                                    toast.success('Registration Successfully.')
                                     saveUser(user?.displayName, user?.email, data.role);
                                 })
                                 .catch(error => console.log(error));

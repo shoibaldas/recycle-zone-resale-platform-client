@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../../context/AuthProvider';
 import useToken from '../../../hook/useToken';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const [loading, setLoading] = useState(false);
@@ -24,6 +25,7 @@ const Login = () => {
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
             console.log(result.user)
+            toast.success('Logged in successfully.');
             navigate(from, { replace: true })
         })
     }
@@ -34,7 +36,7 @@ const Login = () => {
         signInUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                toast.success('Logged in successfully.');
                 setSignIn(user);
                 setLoginUserEmail(data.email);
             })
