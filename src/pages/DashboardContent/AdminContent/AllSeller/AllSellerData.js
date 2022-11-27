@@ -2,7 +2,7 @@ import React from 'react';
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiFillDelete } from "react-icons/ai";
 
-const AllSellerData = ({ seller, setDeletingSeller }) => {
+const AllSellerData = ({ seller, setDeletingSeller, setVerifySeller }) => {
     const { displayName, email } = seller;
     return (
         <tr className=" border-b dark:bg-gray-800 dark:border-gray-700">
@@ -14,12 +14,22 @@ const AllSellerData = ({ seller, setDeletingSeller }) => {
             </th>
             <td className="py-4 px-6">
                 <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-400 mr-2"></div> Online
+
+                    <label className={seller?.status === 'Veryfied' ? 'text-green-500' : 'text-red-500'}>
+                        {
+                            seller?.status === 'Veryfied' ? 'Veryfied' : 'Not Veryfied'
+                        }
+                    </label>
                 </div>
             </td>
             <td className="py-4 px-6">
                 <div className='flex'>
-                    {/* <div title='verify' className=' cursor-pointer text-xl mr-4 text-blue-600'><BsFillCheckCircleFill /></div> */}
+                    <label onClick={() => setVerifySeller(seller)} htmlFor="confirmation-modal" title='Verify Seller' className="text-2xl text-green-500"><BsFillCheckCircleFill /></label>
+
+                </div>
+            </td>
+            <td className="py-4 px-6">
+                <div className='flex'>
                     <label onClick={() => setDeletingSeller(seller)} htmlFor="confirmation-modal" title='Delete Seller' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>

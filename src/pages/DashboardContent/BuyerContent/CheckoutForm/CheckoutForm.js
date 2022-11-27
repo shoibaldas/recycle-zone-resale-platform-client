@@ -106,8 +106,6 @@ const CheckoutForm = ({ booking }) => {
                 })
         }
         setProcessing(false);
-
-
     }
 
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaShopify, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
+import { FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { AiFillMail } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
@@ -40,20 +40,6 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
                     </div>
                 </div>
             </td>
-            {/* <td>
-                            {
-                                        order.newPrice && !order.paid && <Link
-                                            to={/dashboard/myorders/payment/${order._id}}
-                                        >
-                                            <button
-                                                className='btn bg-sky-500 border-none btn-sm'
-                                            >Pay</button>
-                                        </Link>
-                                    }
-                                    {
-                                        order.newPrice && order.paid && <button className='flex items-center justify-center w-full p-1 font-semibold tracking-wide rounded-md bg-sky-600 hover:bg-sky-700 text-gray-100 '>Paid</button>
-                                    }
-                            </td> */}
             <td className="py-4 px-6">
                 <div className='flex'>
                     {

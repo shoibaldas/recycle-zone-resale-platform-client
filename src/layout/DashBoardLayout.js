@@ -11,6 +11,7 @@ const DashBoardLayout = () => {
     const [isAdmin] = useAdmin(user?.email);
     const [isBuyer] = useBuyer(user?.email);
     const [isSeller] = useSeller(user?.email);
+
     return (
         <div>
             <Navbar></Navbar>
@@ -41,7 +42,6 @@ const DashBoardLayout = () => {
                             </>
                         }
                     </ul>
-
                 </div>
             </div>
         </div>
