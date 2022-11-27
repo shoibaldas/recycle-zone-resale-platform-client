@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 import Loading from '../../../../Loading/Loading';
-import DeleteProductModal from '../MangeProduct/DeleteProductModal/DeleteProductModal';
+import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
 import MyProductsData from './MyProductsData';
 
 const MyProducts = () => {
@@ -32,7 +32,7 @@ const MyProducts = () => {
             }
         }
     });
-    const handleDeleteDoctor = product => {
+    const handleDeleteProduct = product => {
         fetch(`http://localhost:5000/products/${product._id}`, {
             method: 'DELETE',
             headers: {
@@ -78,15 +78,15 @@ const MyProducts = () => {
                 </tbody>
             </table>
             {
-                deletingProduct && <DeleteProductModal
+                deletingProduct && <DeleteConfirmationModal
                     title={`Are you sure you want to delete?`}
                     message={`If you delete ${deletingProduct.productName}. It cannot be undone.`}
-                    successAction={handleDeleteDoctor}
+                    successAction={handleDeleteProduct}
                     successButtonName="Delete"
                     modalData={deletingProduct}
                     closeModal={closeModal}
                 >
-                </DeleteProductModal>
+                </DeleteConfirmationModal>
             }
         </div>
 

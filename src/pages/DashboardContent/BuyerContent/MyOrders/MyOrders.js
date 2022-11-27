@@ -1,20 +1,52 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../../context/AuthProvider';
 import Loading from '../../../../Loading/Loading';
+import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
 import MyOrdersData from './MyOrdersData';
 
 const MyOrders = () => {
     const { user } = useContext(AuthContext);
+    const [deletingOrder, setDeletingOrder] = useState(null);
 
-    const { data: myorders = [], isLoading } = useQuery({
-        queryKey: ['myorder'],
+    const closeModal = () => {
+        setDeletingOrder(null);
+    }
+
+    const { data: myorders = [], refetch, isLoading } = useQuery({
+        queryKey: ['myorders'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/orders/${user?.email}`);
-            const data = await res.json();
-            return data;
+            try {
+                const res = await fetch(`http://localhost:5000/orders/${user?.email}`, {
+                    headers: {
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }
+                });
+                const data = await res.json();
+                return data;
+            }
+            catch (error) {
+
+            }
         }
     });
+
+    const handleDeleteOrder = order => {
+        fetch(`http://localhost:5000/orders/${order._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${order.productName} deleted successfully`)
+                }
+            })
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -43,11 +75,22 @@ const MyOrders = () => {
                 <tbody>
                     {
                         myorders?.map(order => <MyOrdersData key={order._id}
-                            order={order}></MyOrdersData>
+                            order={order} setDeletingOrder={setDeletingOrder}></MyOrdersData>
                         )
                     }
                 </tbody>
             </table>
+            {
+                deletingOrder && <DeleteConfirmationModal
+                    title={`Are you sure you want to delete?`}
+                    message={`If you delete ${deletingOrder.productName}. It cannot be undone.`}
+                    successAction={handleDeleteOrder}
+                    successButtonName="Delete"
+                    modalData={deletingOrder}
+                    closeModal={closeModal}
+                >
+                </DeleteConfirmationModal>
+            }
         </div>
 
     );

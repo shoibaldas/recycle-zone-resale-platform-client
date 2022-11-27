@@ -2,8 +2,9 @@ import React from 'react';
 import { FaShopify, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { AiFillMail } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 
-const MyOrdersData = ({ order }) => {
+const MyOrdersData = ({ order, setDeletingOrder }) => {
     const { email, nameBuyer, image, productName, price, phone, meetLocation } = order;
     return (
         <tr className=" border-b dark:bg-gray-800 dark:border-gray-700">
@@ -40,7 +41,8 @@ const MyOrdersData = ({ order }) => {
             </td>
             <td className="py-4 px-6">
                 <div className='flex'>
-                    <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div>
+                    {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
+                    <label onClick={() => setDeletingOrder(order)} htmlFor="confirmation-modal" title='Delete Product' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
         </tr>

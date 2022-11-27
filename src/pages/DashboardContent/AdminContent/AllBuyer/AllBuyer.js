@@ -1,10 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import Loading from '../../../../Loading/Loading';
+import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
 import AllBuyerData from './AllBuyerData';
 
 const AllBuyer = () => {
-    const { data: allbuyers = [], isLoading } = useQuery({
+    const [deletingBuyer, setDeletingBuyer] = useState(null);
+
+    const closeModal = () => {
+        setDeletingBuyer(null);
+    }
+
+    const { data: allbuyers = [], refetch, isLoading } = useQuery({
         queryKey: ['allbuyer'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users/allbuyer');
@@ -12,6 +20,22 @@ const AllBuyer = () => {
             return data;
         }
     });
+
+    const handleDeleteBuyer = buyer => {
+        fetch(`http://localhost:5000/users/${buyer._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${buyer.displayName} deleted successfully`)
+                }
+            })
+    }
 
     if (isLoading) {
         return <Loading></Loading>
@@ -39,10 +63,22 @@ const AllBuyer = () => {
                         allbuyers?.map(buyer => <AllBuyerData
                             key={buyer._id}
                             buyer={buyer}
+                            setDeletingBuyer={setDeletingBuyer}
                         ></AllBuyerData>)
                     }
                 </tbody>
             </table>
+            {
+                deletingBuyer && <DeleteConfirmationModal
+                    title={`Are you sure you want to delete?`}
+                    message={`If you delete ${deletingBuyer.displayName}. It cannot be undone.`}
+                    successAction={handleDeleteBuyer}
+                    successButtonName="Delete"
+                    modalData={deletingBuyer}
+                    closeModal={closeModal}
+                >
+                </DeleteConfirmationModal>
+            }
         </div>
 
     );

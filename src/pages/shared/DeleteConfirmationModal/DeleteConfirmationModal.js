@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const DeleteProductModal = ({ title, message, successButtonName, closeModal, modalData, successAction }) => {
+const DeleteConfirmationModal = ({ title, message, successButtonName, closeModal, modalData, successAction }) => {
 
 
     return (
@@ -24,4 +24,4 @@ const DeleteProductModal = ({ title, message, successButtonName, closeModal, mod
     );
 };
 
-export default DeleteProductModal;
+export default DeleteConfirmationModal;
