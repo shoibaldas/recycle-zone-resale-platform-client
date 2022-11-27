@@ -3,6 +3,7 @@ import { FaShopify, FaLocationArrow, FaPhoneAlt } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { AiFillMail } from "react-icons/ai";
 import { AiFillDelete } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 const MyOrdersData = ({ order, setDeletingOrder }) => {
     const { email, nameBuyer, image, productName, price, phone, meetLocation } = order;
@@ -39,13 +40,43 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
                     </div>
                 </div>
             </td>
+            {/* <td>
+                            {
+                                        order.newPrice && !order.paid && <Link
+                                            to={/dashboard/myorders/payment/${order._id}}
+                                        >
+                                            <button
+                                                className='btn bg-sky-500 border-none btn-sm'
+                                            >Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        order.newPrice && order.paid && <button className='flex items-center justify-center w-full p-1 font-semibold tracking-wide rounded-md bg-sky-600 hover:bg-sky-700 text-gray-100 '>Paid</button>
+                                    }
+                            </td> */}
+            <td className="py-4 px-6">
+                <div className='flex'>
+                    {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
+                    {/* <label htmlFor="confirmation-modal" title='Make Advertisement' className="text-gray-800 text-sm font-medium bg-amber-600 px-2 py-1 rounded-lg hover:text-gray-400 hover:bg-amber-800">Unpaid</label> */}
+                    {
+                        order.price && !order.paid && <Link to={`/dashboard/myorders/payment/${order._id}`}>
+                            <button
+                                className='btn bg-sky-500 border-none btn-sm'
+                            >Pay</button>
+                        </Link>
+                    }
+                    {
+                        order.price && order.paid && <button className='flex items-center justify-center w-full p-1 font-semibold tracking-wide rounded-md bg-sky-600 hover:bg-sky-700 text-gray-100 '>Paid</button>
+                    }
+                </div>
+            </td>
             <td className="py-4 px-6">
                 <div className='flex'>
                     {/* <div title='Pay Now' className='ml-4 cursor-pointer text-xl text-sky-600'><FaShopify /></div> */}
                     <label onClick={() => setDeletingOrder(order)} htmlFor="confirmation-modal" title='Delete Order' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
-        </tr>
+        </tr >
     );
 };
 

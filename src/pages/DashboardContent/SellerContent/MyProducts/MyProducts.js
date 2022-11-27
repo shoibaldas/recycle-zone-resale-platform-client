@@ -56,7 +56,7 @@ const MyProducts = () => {
         })
             .then(res => res.json())
             .then(res => {
-                if (res.success) {
+                if (res) {
                     toast.success(`${product.productName} published successfully`);
                 }
             })

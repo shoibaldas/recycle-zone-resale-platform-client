@@ -68,6 +68,9 @@ const MyOrders = () => {
                             Contact Info
                         </th>
                         <th scope="col" className="py-3 px-6">
+                            Payment
+                        </th>
+                        <th scope="col" className="py-3 px-6">
                             Action
                         </th>
                     </tr>
