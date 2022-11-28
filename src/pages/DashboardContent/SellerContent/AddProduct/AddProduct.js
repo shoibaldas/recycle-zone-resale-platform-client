@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/AuthProvider';
+import useTitle from '../../../../hook/useTitle';
 import Loading from '../../../../Loading/Loading';
 
 const AddProduct = () => {
+    useTitle('Add Product');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const imageHostKey = process.env.REACT_APP_imgbb_key;

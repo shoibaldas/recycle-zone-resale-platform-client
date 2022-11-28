@@ -2,8 +2,10 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import useTitle from '../../../../hook/useTitle';
 
 const CheckoutForm = ({ booking }) => {
+    useTitle('Checkout');
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);

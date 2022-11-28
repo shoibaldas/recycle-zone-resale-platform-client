@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../../hook/useTitle';
 import Loading from '../../../../Loading/Loading';
 import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
 import AllBuyerData from './AllBuyerData';
 
 const AllBuyer = () => {
+    useTitle('All Buyers');
     const [deletingBuyer, setDeletingBuyer] = useState(null);
 
     const closeModal = () => {

@@ -5,8 +5,10 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../../context/AuthProvider';
 import useToken from '../../../hook/useToken';
 import toast from 'react-hot-toast';
+import useTitle from '../../../hook/useTitle';
 
 const Login = () => {
+    useTitle('Login')
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
     const handleToggleShowPassword = () => setShowPassword(!showPassword)

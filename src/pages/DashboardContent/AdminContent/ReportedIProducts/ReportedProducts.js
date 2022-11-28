@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import useTitle from '../../../../hook/useTitle';
 import Loading from '../../../../Loading/Loading';
 import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
 import ReportData from './ReportData';
 
 const ReportedProducts = () => {
+    useTitle('Reports');
     const [deletingProduct, setDeletingProduct] = useState(null);
 
     const closeModal = () => {
@@ -21,8 +23,8 @@ const ReportedProducts = () => {
         }
     });
 
-    const handleDeleteReport = report => {
-        fetch(`https://recycle-zone-server.vercel.app/users/${report._id}`, {
+    const handleDeleteReportedProduct = products => {
+        fetch(`https://recycle-zone-server.vercel.app/products/${products._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +34,7 @@ const ReportedProducts = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(`${report.displayName} deleted successfully`)
+                    toast.success(`${products.displayName} deleted successfully`)
                 }
             })
     };
@@ -65,6 +67,7 @@ const ReportedProducts = () => {
                         reports?.map(report => <ReportData
                             key={report._id}
                             report={report}
+
                             setDeletingProduct={setDeletingProduct}
                         ></ReportData>)
                     }
@@ -74,7 +77,7 @@ const ReportedProducts = () => {
                 deletingProduct && <DeleteConfirmationModal
                     title={`Are you sure you want to delete?`}
                     message={`If you delete ${deletingProduct.productName}. It cannot be undone.`}
-                    successAction={handleDeleteReport}
+                    successAction={handleDeleteReportedProduct}
                     successButtonName="Delete"
                     modalData={deletingProduct}
                     closeModal={closeModal}

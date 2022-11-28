@@ -5,8 +5,10 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import useToken from '../../../hook/useToken';
+import useTitle from '../../../hook/useTitle';
 
 const Signup = () => {
+    useTitle('Sign up')
     const [showPassword, setShowPassword] = useState(false);
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm();

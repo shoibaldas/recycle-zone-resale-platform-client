@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hook/useTitle';
 import Loading from '../../Loading/Loading';
 import BookingModal from '../DashboardContent/BuyerContent/BookingModal/BookingModal';
 import ReportConfirmationModal from '../ReportProducts/ReportConfirmationModal/ReportConfirmationModal';
@@ -9,6 +10,7 @@ import ReportConfirmationModal from '../ReportProducts/ReportConfirmationModal/R
 import ProductData from './ProductData';
 
 const Products = () => {
+    useTitle('Products');
     const { user, loading } = useContext(AuthContext);
     const [booking, setBooking] = useState(null);
     const { categoryName } = useParams();

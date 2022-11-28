@@ -2,7 +2,7 @@ import React from 'react';
 import { AiFillDelete } from "react-icons/ai";
 
 const ReportData = ({ report, setDeletingProduct }) => {
-    const { user, email, productName, productSellerMail } = report;
+    const { user, email, productName, productSellerMail, productId } = report;
     return (
         <tr className=" border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" className="flex items-center py-4 px-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -19,7 +19,7 @@ const ReportData = ({ report, setDeletingProduct }) => {
             </td>
             <td className="py-4 px-6">
                 <div className='flex'>
-                    <label onClick={() => setDeletingProduct(report)} htmlFor="confirmation-modal" title='Delete Product' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
+                    <label onClick={() => setDeletingProduct(productId)} htmlFor="confirmation-modal" title='Delete Product' className="text-2xl text-red-500"><AiFillDelete className='mx-4' /></label>
                 </div>
             </td>
         </tr>
