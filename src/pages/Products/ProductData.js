@@ -14,7 +14,7 @@ const ProductData = ({ product, setBooking, veryfied, setReportProduct, setProdu
                     <img src={image} alt="" className="object-fit md:object-cover w-full lg:col-span-7" />
                 </PhotoView>
             </PhotoProvider>
-            <div className="bg-teal-800 p-6 lg:col-span-5">
+            <div className="bg-teal-900 p-6 lg:col-span-5">
                 <div className='flex items-center justify-between'>
                     <h3 className="text-2xl font-semibold sm:text-2xl">{productName}</h3>
                     <div>
@@ -35,6 +35,7 @@ const ProductData = ({ product, setBooking, veryfied, setReportProduct, setProdu
                     </div>
                 </div>
                 <p className='font-semibold'>Contact: <span className='font-normal'>{phone}, {address}</span></p>
+                <br />
                 <div className='bg-black px-2 my-2 rounded-md w-44'>
                     <p className=' text-md font-semibold'>Condition: <span className='font-normal'>{condition}</span></p>
                 </div>

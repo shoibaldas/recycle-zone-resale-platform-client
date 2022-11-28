@@ -74,7 +74,7 @@ const Navbar = () => {
                     }
                 </span>
             </div>
-            <ul className={`gap-5 md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 pl-6 md:pl-0 opacity-0 md:opacity-100 top-[-96] transition-all ease-in duration-500 ${open ? 'top-16' : 'top-0'} ${open ? 'opacity-100' : 'opacity-0'}`}>
+            <ul className={`gap-5 md:flex md:items-center md:static absolute w-full left-0 md:w-auto md:py-0 pl-6 md:pl-0 opacity-0 md:opacity-100 top-[-96] transition-all ease-in duration-500 ${open ? 'top-16' : 'top-0'} ${open ? 'opacity-100' : 'opacity-0'}`}>
                 {menuItems}
             </ul>
         </nav>

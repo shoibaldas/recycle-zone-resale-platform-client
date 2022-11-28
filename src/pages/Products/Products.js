@@ -69,7 +69,7 @@ const Products = () => {
     }
 
     return (
-        <section className="dark:text-gray-100">
+        <section className="dark:text-gray-100 min-h-screen">
             <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                 {
                     products?.map(product => <ProductData

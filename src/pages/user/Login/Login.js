@@ -9,6 +9,7 @@ import useTitle from '../../../hook/useTitle';
 
 const Login = () => {
     useTitle('Login')
+    const { user } = useContext(AuthContext);
     const [showPassword, setShowPassword] = useState(false)
     const handleToggleShowPassword = () => setShowPassword(!showPassword)
     const [loginUserEmail, setLoginUserEmail] = useState('')
@@ -23,13 +24,17 @@ const Login = () => {
     if (token) {
         navigate(from, { replace: true });
     }
+    
     const handleGoogleSignin = () => {
-        signInWithGoogle()
-            .then(result => {
-                console.log(result.user)
-                toast.success('Logged in successfully.');
-                navigate(from, { replace: true })
-            })
+        signInWithGoogle().then(result => {
+            const user = result.user;
+            const speciality = {
+                role: 'buyer'
+            }
+            toast.success('Logged in Successfully.');
+            saveUser(user?.displayName, user?.email, speciality.role);
+            navigate(from, { replace: true })
+        })
     }
 
     const handleLogin = async (data) => {
@@ -47,6 +52,21 @@ const Login = () => {
                 setLoginError(error.message);
             });
     };
+
+    const saveUser = (displayName, email, role) => {
+        const user = { displayName, email, role };
+        fetch('https://recycle-zone-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(() => {
+                setLoginUserEmail(email);
+            })
+    }
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     return (
