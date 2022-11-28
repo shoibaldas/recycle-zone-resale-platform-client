@@ -11,14 +11,14 @@ const ProductCategory = () => {
     // const { data: categories = [], isLoading } = useQuery({
     //     queryKey: ['category'],
     //     queryFn: async () => {
-    //         const res = await fetch('http://localhost:5000/categories');
+    //         const res = await fetch('https://recycle-zone-server.vercel.app/categories');
     //         const data = await res.json();
     //         return data;
     //     }
     // });
     useEffect(() => {
         axios
-            .get('http://localhost:5000/categories')
+            .get('https://recycle-zone-server.vercel.app/categories')
             .then(function (response) {
                 setCategories(response.data);
                 setLoading(false)

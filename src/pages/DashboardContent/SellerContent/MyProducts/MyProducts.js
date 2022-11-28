@@ -24,7 +24,7 @@ const MyProducts = () => {
         queryKey: ['myproduct'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/products/${user?.email}`, {
+                const res = await fetch(`https://recycle-zone-server.vercel.app/products/${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -48,7 +48,7 @@ const MyProducts = () => {
             category: product.category
         }
 
-        fetch(`http://localhost:5000/advertisements`, {
+        fetch(`https://recycle-zone-server.vercel.app/advertisements`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -65,7 +65,7 @@ const MyProducts = () => {
     }
 
     const handleDeleteProduct = product => {
-        fetch(`http://localhost:5000/products/${product._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/products/${product._id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
