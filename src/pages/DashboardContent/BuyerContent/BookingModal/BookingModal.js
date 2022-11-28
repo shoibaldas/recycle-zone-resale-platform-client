@@ -24,7 +24,7 @@ const BookingModal = ({ booking, setBooking }) => {
             phone: phoneNo
         }
 
-        fetch(`http://localhost:5000/orders`, {
+        fetch(`https://recycle-zone-server.vercel.app/orders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

@@ -21,14 +21,14 @@ const Allseller = () => {
     const { data: allsellers = [], refetch, isLoading } = useQuery({
         queryKey: ['allseller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/allseller');
+            const res = await fetch('https://recycle-zone-server.vercel.app/users/allseller');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteSeller = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -44,7 +44,7 @@ const Allseller = () => {
     };
 
     const handleVerifySeller = seller => {
-        fetch(`http://localhost:5000/users/seller/${seller._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/users/seller/${seller._id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

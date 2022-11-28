@@ -18,7 +18,7 @@ const MyOrders = () => {
         queryKey: ['myorders'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/orders/${user?.email}`, {
+                const res = await fetch(`https://recycle-zone-server.vercel.app/orders/${user?.email}`, {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('accessToken')}`
                     }
@@ -33,7 +33,7 @@ const MyOrders = () => {
     });
 
     const handleDeleteOrder = order => {
-        fetch(`http://localhost:5000/orders/${order._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/orders/${order._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

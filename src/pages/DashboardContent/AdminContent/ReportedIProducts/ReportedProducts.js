@@ -15,14 +15,14 @@ const ReportedProducts = () => {
     const { data: reports = [], refetch, isLoading } = useQuery({
         queryKey: ['report'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reports');
+            const res = await fetch('https://recycle-zone-server.vercel.app/reports');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteReport = report => {
-        fetch(`http://localhost:5000/users/${report._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/users/${report._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

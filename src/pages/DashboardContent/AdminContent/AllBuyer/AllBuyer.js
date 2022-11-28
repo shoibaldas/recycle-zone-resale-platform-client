@@ -15,14 +15,14 @@ const AllBuyer = () => {
     const { data: allbuyers = [], refetch, isLoading } = useQuery({
         queryKey: ['allbuyer'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users/allbuyer');
+            const res = await fetch('https://recycle-zone-server.vercel.app/users/allbuyer');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeleteBuyer = buyer => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://recycle-zone-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

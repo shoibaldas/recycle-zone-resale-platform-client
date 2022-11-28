@@ -1,20 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../../context/AuthProvider';
 import Loading from '../../../Loading/Loading';
 import ProductItems from '../ProductItems/ProductItems';
 
 const ProductCategory = () => {
+    const { loading, setLoading } = useContext(AuthContext);
+    const [categories, setCategories] = useState([]);
+    // const { data: categories = [], isLoading } = useQuery({
+    //     queryKey: ['category'],
+    //     queryFn: async () => {
+    //         const res = await fetch('https://recycle-zone-server.vercel.app/categories');
+    //         const data = await res.json();
+    //         return data;
+    //     }
+    // });
+    useEffect(() => {
+        axios
+            .get('https://recycle-zone-server.vercel.app/categories')
+            .then(function (response) {
+                setCategories(response.data);
+                setLoading(false)
+            });
+    }, [])
 
-    const { data: categories = [], isLoading } = useQuery({
-        queryKey: ['category'],
-        queryFn: async () => {
-            const res = await fetch('http://localhost:5000/categories');
-            const data = await res.json();
-            return data;
-        }
-    });
-
-    if (isLoading) {
+    if (loading) {
         return <Loading></Loading>
     }
 
