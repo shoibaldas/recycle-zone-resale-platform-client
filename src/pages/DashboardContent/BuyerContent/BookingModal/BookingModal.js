@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const BookingModal = ({ booking, setBooking }) => {
     const { user } = useContext(AuthContext);
-    const { productName, image, newPrice } = booking;
+    const { productName, image, newPrice, _id } = booking;
     const hadleBookNow = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,7 +21,8 @@ const BookingModal = ({ booking, setBooking }) => {
             price: newPrice,
             image,
             meetLocation,
-            phone: phoneNo
+            phone: phoneNo,
+            bookingId: _id 
         }
 
         fetch(`http://localhost:5000/orders`, {

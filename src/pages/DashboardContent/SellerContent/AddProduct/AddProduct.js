@@ -55,7 +55,8 @@ const AddProduct = () => {
                         newPrice: data.newPrice,
                         condition: data.condition,
                         category: data.category,
-                        time: newDateTime
+                        time: newDateTime,
+                        quantity: 1
                     }
                     console.log(productInfo)
                     fetch(`http://localhost:5000/products`, {

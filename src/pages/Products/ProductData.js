@@ -5,7 +5,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
 const ProductData = ({ product, setBooking, veryfied, setReportProduct, setProductEmail }) => {
-    const { image, productName, description, category, sellerName, oldPrice, newPrice, condition, phone, address, time, sellerMail } = product;
+    const { image, productName, description, category, sellerName, oldPrice, newPrice, condition, phone, address, time, sellerMail, quantity } = product;
     setProductEmail(sellerMail)
     return (
         <div className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-900">
@@ -16,7 +16,9 @@ const ProductData = ({ product, setBooking, veryfied, setReportProduct, setProdu
             </PhotoProvider>
             <div className="bg-teal-900 p-6 lg:col-span-5">
                 <div className='flex items-center justify-between'>
-                    <h3 className="text-2xl font-semibold sm:text-2xl">{productName}</h3>
+                    <h3 className="text-2xl font-semibold sm:text-2xl">{productName} <span className='text-sm text-amber-400'>{
+                        quantity === 0 ? 'Sold Out' : 'In Stock'
+                    }</span></h3>
                     <div>
                         <label onClick={() => setReportProduct(product)} htmlFor="confirmation-modal" title='Make Advertisement' className="text-gray-800 text-sm font-medium bg-amber-600 px-2 py-1 rounded-lg hover:text-gray-400 hover:bg-amber-800">Report</label>
                     </div>

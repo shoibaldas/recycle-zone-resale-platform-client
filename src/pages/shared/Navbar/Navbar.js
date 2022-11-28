@@ -60,7 +60,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className='bg-black p-2 md:flex md:justify-between md:items-center'>
+        <nav className='relative bg-black p-2 md:flex md:justify-between md:items-center'>
             <div className='flex items-center justify-between'>
                 <Link className='font-bold text-2xl cursor-pointer flex items-center text-gray-50'>
                     <span className='text-4xl font-semibold text-indigo-600 mr-1 pt-2'>
@@ -74,7 +74,7 @@ const Navbar = () => {
                     }
                 </span>
             </div>
-            <ul className={`gap-5 md:flex md:items-center md:static absolute w-full left-0 md:w-auto md:py-0 pl-6 md:pl-0 opacity-0 md:opacity-100 top-[-96] transition-all ease-in duration-500 ${open ? 'top-16' : 'top-0'} ${open ? 'opacity-100' : 'opacity-0'}`}>
+            <ul className={`gap-5 md:flex md:items-center z-[-1] md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 pl-6 md:pl-0 opacity-0 md:opacity-100 top-[-96] transition-all ease-in duration-500 ${open ? 'top-16' : 'top-0'} ${open ? 'opacity-100' : 'opacity-0'}`}>
                 {menuItems}
             </ul>
         </nav>

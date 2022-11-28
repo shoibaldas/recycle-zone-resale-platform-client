@@ -15,7 +15,7 @@ const CheckoutForm = ({ booking }) => {
 
     const stripe = useStripe();
     const elements = useElements();
-    const { price, email, productName, _id } = booking;
+    const { price, email, productName, _id, bookingId } = booking;
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
@@ -91,7 +91,7 @@ const CheckoutForm = ({ booking }) => {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
-                    authorization: `bearer ${localStorage.getItem('moto-token')}`
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(payment)
             })
@@ -99,6 +99,17 @@ const CheckoutForm = ({ booking }) => {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
+                        fetch(`http://localhost:5000/stockout/${bookingId}`, {
+                            method: 'PATCH',
+                            headers: {
+                                'content-type': 'application/json',
+                                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+
+                            })
                         setSuccess('Congrats! your payment completed');
                         setTransactionId(paymentIntent.id);
                         swal('Congrats! your payment completed', `your TransactionId:${paymentIntent.id}`, "success");

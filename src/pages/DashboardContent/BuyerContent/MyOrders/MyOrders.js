@@ -38,6 +38,7 @@ const MyOrders = () => {
         fetch(`http://localhost:5000/orders/${order._id}`, {
             method: 'DELETE',
             headers: {
+                'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })

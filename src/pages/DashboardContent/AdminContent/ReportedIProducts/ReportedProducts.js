@@ -42,6 +42,7 @@ const ReportedProducts = () => {
         fetch(`http://localhost:5000/reported-products/${products._id}`, {
             method: 'DELETE',
             headers: {
+                'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
