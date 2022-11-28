@@ -7,27 +7,27 @@ import HomeCarousel from './HomeCarousel';
 const bannerItem = [
     {
         image: img1,
-        title: "Branding with particular logo",
-        info: "A logo is what identifies your brand using a particular mark, type design, or both.",
+        title: "The Best Cycle Resale Market Place For You",
+        info: "Expand the map by pedaling farther than you can. So that you may explore the roads, trails, and gravel outside of your usual routes, Thule is designed to rack 'em up.",
         id: 1,
-        prev: 4,
+        prev: 3,
         next: 2
     },
     {
         image: img2,
-        title: "Marketing design of visual assets",
-        info: "Marketing design applies graphic design principles to the ultimate goals of a marketing effort.",
+        title: "Cycling Seasons Never Ends",
+        info: "Expand the map by pedaling farther than you can. So that you may explore the roads, trails, and gravel outside of your usual routes, Thule is designed to rack 'em up.",
         id: 2,
         prev: 1,
         next: 3
     },
     {
         image: img3,
-        title: "Visual design of a site",
-        info: "Visual design focuses on the aesthetics of a site and its related materials with suitable combination.",
+        title: "Keep Your Jorney A Little Bit Interesting",
+        info: "Expand the map by pedaling farther than you can. So that you may explore the roads, trails, and gravel outside of your usual routes, Thule is designed to rack 'em up.",
         id: 3,
         prev: 2,
-        next: 4
+        next: 1
     }
 ]
 

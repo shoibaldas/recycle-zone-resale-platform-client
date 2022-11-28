@@ -79,7 +79,7 @@ const Signup = () => {
 
     const saveUser = (displayName, email, role) => {
         const user = { displayName, email, role };
-        fetch('https://recycle-zone-server.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

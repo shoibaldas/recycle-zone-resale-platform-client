@@ -8,8 +8,7 @@ import toast from 'react-hot-toast';
 import useTitle from '../../../hook/useTitle';
 
 const Login = () => {
-    useTitle('Login')
-    const { user } = useContext(AuthContext);
+    useTitle('Login');
     const [showPassword, setShowPassword] = useState(false)
     const handleToggleShowPassword = () => setShowPassword(!showPassword)
     const [loginUserEmail, setLoginUserEmail] = useState('')
@@ -24,7 +23,7 @@ const Login = () => {
     if (token) {
         navigate(from, { replace: true });
     }
-    
+
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
             const user = result.user;
@@ -55,7 +54,7 @@ const Login = () => {
 
     const saveUser = (displayName, email, role) => {
         const user = { displayName, email, role };
-        fetch('https://recycle-zone-server.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -24,12 +24,12 @@ const Products = () => {
     }
 
     useEffect(() => {
-        fetch(`https://recycle-zone-server.vercel.app/category/${categoryName}`)
+        fetch(`http://localhost:5000/category/${categoryName}`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
                 if (data) {
-                    fetch(`https://recycle-zone-server.vercel.app/veryfied/seller/${productEmail}`)
+                    fetch(`http://localhost:5000/veryfied/seller/${productEmail}`)
                         .then(res => res.json())
                         .then(data => {
                             console.log(data)
@@ -48,7 +48,7 @@ const Products = () => {
             productSellerMail: product.sellerMail
         }
 
-        fetch(`https://recycle-zone-server.vercel.app/report-items`, {
+        fetch(`http://localhost:5000/report-items`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

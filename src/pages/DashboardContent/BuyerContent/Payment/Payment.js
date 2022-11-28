@@ -12,7 +12,7 @@ const Payment = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`https://recycle-zone-server.vercel.app/orders/payment/${id}`)
+        fetch(`http://localhost:5000/orders/payment/${id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

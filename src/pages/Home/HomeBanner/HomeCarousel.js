@@ -16,10 +16,10 @@ const HomeCarousel = ({ slide }) => {
             <div className="absolute flex justify-start transform -translate-y-1/2 left-5 md:left-10 top-1/4">
                 <h1 className='text-2xl md:text-4xl lg:text-6xl text-gray-100 font-bold leading-6 w-4/6 md:w-4/6'>{title}</h1>
             </div>
-            <div className="absolute flex justify-start transform -translate-y-1/2 md:translate-y-full mt-2 md:mt-0 lg:mt-8 left-5 md:left-10 top-2/4 md:top-1/3">
-                <p className='text-sm text-gray-200 w-full md:w-3/5'>{info}</p>
+            <div className="absolute flex justify-start transform -translate-y-1/2 md:translate-y-full mt-2 md:mt-0 lg:mt-8 left-5 md:left-10 top-2/4 md:top-1/4">
+                <p className='text-sm md:text-lg text-gray-200 w-full md:w-3/5'>{info}</p>
             </div>
-            <div className="absolute flex justify-start transform -translate-y-1/2 left-5 mt-2 md:mt-0 md:left-10 top-3/4 md:top-2/3">
+            <div className="absolute flex justify-start transform -translate-y-1/3 left-5 mt-2 md:mt-0 md:left-10 top-3/4 md:top-2/4">
                 <Link to='/' className="rounded cursor-pointer px-2 py-1 md:px-4 md:py-2  text-gray-100 font-semibold bg-teal-600 hover:bg-teal-700 ease-in duration-200 mr-5">Discover More</Link>
             </div>
         </div >

@@ -17,14 +17,15 @@ const ReportedProducts = () => {
     const { data: reports = [], refetch, isLoading } = useQuery({
         queryKey: ['report'],
         queryFn: async () => {
-            const res = await fetch('https://recycle-zone-server.vercel.app/reports');
+            const res = await fetch('http://localhost:5000/reports');
             const data = await res.json();
             return data;
         }
     });
 
-    const handleDeleteReportedProduct = products => {
-        fetch(`https://recycle-zone-server.vercel.app/products/${products._id}`, {
+    const handleDeleteProduct = products => {
+        console.log(products)
+        fetch(`http://localhost:5000/products/${products.productId}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +35,21 @@ const ReportedProducts = () => {
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(`${products.displayName} deleted successfully`)
+                    toast.success(`${products.productName} deleted successfully`)
+                }
+            })
+
+        fetch(`http://localhost:5000/reported-products/${products._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    toast.success(`${products.productName} deleted successfully`)
                 }
             })
     };
@@ -74,15 +89,17 @@ const ReportedProducts = () => {
                 </tbody>
             </table>
             {
+
                 deletingProduct && <DeleteConfirmationModal
                     title={`Are you sure you want to delete?`}
                     message={`If you delete ${deletingProduct.productName}. It cannot be undone.`}
-                    successAction={handleDeleteReportedProduct}
+                    successAction={handleDeleteProduct}
                     successButtonName="Delete"
                     modalData={deletingProduct}
                     closeModal={closeModal}
                 >
                 </DeleteConfirmationModal>
+
             }
         </div>
     );

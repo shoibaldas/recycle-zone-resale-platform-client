@@ -43,5 +43,5 @@ Link: [https://recycle-zone.web.app/](https://recycle-zone.web.app/)
 ## Vercel Link 
 
 ### For category data:
-Link: [https://recycle-zone-server.vercel.app/](https://recycle-zone-server.vercel.app/)
+Link: [http://localhost:5000/](http://localhost:5000/)
 
