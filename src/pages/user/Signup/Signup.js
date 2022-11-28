@@ -13,8 +13,8 @@ const Signup = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [signupError, setSignupError] = useState('');
-    const { createUser, updateUser, signInWithGoogle, setSignIn } = useContext(AuthContext);
-
+    const { createUser, updateUser, signInWithGoogle, setSignIn, logout } = useContext(AuthContext);
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
@@ -26,13 +26,15 @@ const Signup = () => {
 
     const handleGoogleSignin = () => {
         signInWithGoogle().then(result => {
-            console.log(result.user)
-            toast.success('Logged in Successfully.')
+            const user = result.user;
+            const speciality = {
+                role: 'buyer'
+            }
+            toast.success('Logged in Successfully.');
+            saveUser(user?.displayName, user?.email, speciality.role);
             navigate(from, { replace: true })
         })
     }
-
-    const imageHostKey = process.env.REACT_APP_imgbb_key;
 
     const handleSignup = (data) => {
         setSignupError('');
@@ -63,6 +65,7 @@ const Signup = () => {
                                     setSignIn(userInfo)
                                     toast.success('Registration Successfully.')
                                     saveUser(user?.displayName, user?.email, data.role);
+                                    logout();
                                 })
                                 .catch(error => console.log(error));
                         })

@@ -9,7 +9,6 @@ import useTitle from '../../../hook/useTitle';
 
 const Login = () => {
     useTitle('Login')
-    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
     const handleToggleShowPassword = () => setShowPassword(!showPassword)
     const [loginUserEmail, setLoginUserEmail] = useState('')
@@ -25,11 +24,12 @@ const Login = () => {
         navigate(from, { replace: true });
     }
     const handleGoogleSignin = () => {
-        signInWithGoogle().then(result => {
-            console.log(result.user)
-            toast.success('Logged in successfully.');
-            navigate(from, { replace: true })
-        })
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+                toast.success('Logged in successfully.');
+                navigate(from, { replace: true })
+            })
     }
 
     const handleLogin = async (data) => {

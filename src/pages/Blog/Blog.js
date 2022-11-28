@@ -5,6 +5,7 @@ import img3 from '../../assets/Blog/Unit-Testing.jpg';
 import img4 from '../../assets/Blog/ReactAngularVue.jpeg';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../../hook/useTitle';
 
 const blogItem = [
     {
@@ -34,7 +35,7 @@ const blogItem = [
 ]
 
 const Blog = () => {
-
+    useTitle('Blog');
     return (
         <section className=" dark:text-gray-100">
             <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
