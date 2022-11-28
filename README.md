@@ -38,6 +38,7 @@ I have used Google Firebase to host the web application.
 
 Link: [https://recycle-zone.web.app/](https://recycle-zone.web.app/)
 
+## `Admin credentials:` email: admin@gmail.com, password: 123456
 
 ## Vercel Link 
 
