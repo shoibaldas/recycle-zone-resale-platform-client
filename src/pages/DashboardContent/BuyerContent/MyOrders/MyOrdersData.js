@@ -21,15 +21,6 @@ const MyOrdersData = ({ order, setDeletingOrder }) => {
             </th>
             <td className="py-4 px-6">
                 <div className="">
-                    <div className="text-base font-semibold">{nameBuyer}</div>
-                    <div className='flex items-center'>
-                        <AiFillMail className='text-amber-400'></AiFillMail>
-                        <div className="font-normal ml-1 text-gray-200">{email}</div>
-                    </div>
-                </div>
-            </td>
-            <td className="py-4 px-6">
-                <div className="">
                     <div className='flex items-center'>
                         <FaLocationArrow className='text-blue-700'></FaLocationArrow>
                         <div className="text-base ml-1 font-semibold">{meetLocation}</div>

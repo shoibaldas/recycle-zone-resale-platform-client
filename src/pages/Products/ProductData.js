@@ -38,7 +38,7 @@ const ProductData = ({ product, setBooking, veryfied, setReportProduct, setProdu
                 </div>
                 <p className='font-semibold'>Contact: <span className='font-normal'>{phone}, {address}</span></p>
                 <br />
-                <div className='bg-black px-2 my-2 rounded-md w-44'>
+                <div className='bg-black px-2 my-2 rounded-md w-48'>
                     <p className=' text-md font-semibold'>Condition: <span className='font-normal'>{condition}</span></p>
                 </div>
                 <div className='flex justify-between mr-2 md:mr-28'>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../../../context/AuthProvider';
 import useTitle from '../../../../hook/useTitle';
 import Loading from '../../../../Loading/Loading';
 import DeleteConfirmationModal from '../../../shared/DeleteConfirmationModal/DeleteConfirmationModal';
+import MakeAdvertisementModal from '../MakeAdvertisementModal/MakeAdvertisementModal';
 import MyProductsData from './MyProductsData';
 
 const MyProducts = () => {
@@ -128,7 +129,7 @@ const MyProducts = () => {
                 </DeleteConfirmationModal>
             }
             {
-                makeAdvertisement && <DeleteConfirmationModal
+                makeAdvertisement && <MakeAdvertisementModal
                     title={`Are you sure you want to procced?`}
                     message={`Do want to add ${makeAdvertisement.productName} as ad?`}
                     successAction={handleAdvertisement}
@@ -136,7 +137,7 @@ const MyProducts = () => {
                     modalData={makeAdvertisement}
                     closeModal={closeAdModal}
                 >
-                </DeleteConfirmationModal>
+                </MakeAdvertisementModal>
             }
         </div>
 

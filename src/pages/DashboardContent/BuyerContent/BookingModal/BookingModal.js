@@ -50,7 +50,7 @@ const BookingModal = ({ booking, setBooking }) => {
                     <h3 className="text-lg font-bold">Confirm Booking</h3>
                     <div className='flex justify-between items-center mt-6'>
                         <div className='flex items-center'>
-                            <img src={image} className="md:w-6/12 md:h-16 w-4/12 h-10 border border-1 rounded-lg" alt="" />
+                            <img src={image} className="md:w-5/12 md:h-16 w-4/12 h-10 border border-1 rounded-lg" alt="" />
                             <div className=''>
                                 <h5 className='mx-4 font-semibold text-gray-200'>{productName}</h5>
                                 <div className='mx-4 flex items-center'>
@@ -79,7 +79,7 @@ const BookingModal = ({ booking, setBooking }) => {
                         <div className='form-control w-full max-w-xs'>
                             <input type="text" placeholder="meeting location" name='location' required className='text-gray-800 rounded-md py-1 px-2 border border-gray-500' />
                         </div>
-                        <button type='submit' className='bg-accent p-2 w-full max-w-xs rounded-md' >Submit</button>
+                        <button type='submit' className='bg-amber-500 p-2 w-full max-w-xs rounded-md' >Submit</button>
                     </div>
                 </form>
             </div>

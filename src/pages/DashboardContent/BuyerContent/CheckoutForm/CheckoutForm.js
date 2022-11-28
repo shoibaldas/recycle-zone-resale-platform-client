@@ -113,7 +113,7 @@ const CheckoutForm = ({ booking }) => {
                         setSuccess('Congrats! your payment completed');
                         setTransactionId(paymentIntent.id);
                         swal('Congrats! your payment completed', `your TransactionId:${paymentIntent.id}`, "success");
-                        navigate('/dashboard')
+                        navigate('/dashboard/myorders')
 
                     }
                 })
