@@ -23,11 +23,11 @@ This project was bootstrapped with `ReactJs`, `Tailwind component CSS`, `React r
 
 ### Client Side
 
-Link: [ https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-shoibaldas](https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-shoibaldas)
+Link: [ https://github.com/shoibaldas/recycle-zone-resale-platform-client](https://github.com/shoibaldas/recycle-zone-resale-platform-client)
 
 ### Server Side
 
-Link: [https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-shoibaldas](https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-shoibaldas)
+Link: [https://github.com/shoibaldas/recycle-zone-resale-platform-server](https://github.com/shoibaldas/recycle-zone-resale-platform-server)
 
 
 ### Deployment
